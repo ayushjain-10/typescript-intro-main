@@ -1,5 +1,3 @@
-
-
 // These functions take a funtion as an argument. 
 // Set the type these parameters
 
@@ -7,27 +5,27 @@
 
 // This function takes a callback that receives a string. 
 
-function callYouLater(callback: (message: string) => void, time: number) {
+function callYouLater(callback: (value: s) => void, time: number): void {
 	setTimeout(() => {
-		callback('What it be like?')
+		callback({input: 'What it be like?'})
 	}, time)
 }
 
+type s = {
+	input: string
+}
 
-// The callback parameter in this function returns an object
-// with two properties! 
-
-type CallMeResults = {
+type Call = {
 	success: boolean, 
 	probability: number
 }
 
-function callMeMaybe(callback: (results: CallMeResults) => void, probability) {
+function callMeMaybe(callback: (value: Call) => void, probability: number) {
 	setTimeout(() => {
 		if (Math.random() * 100 < probability) {
-			callback({ success: true, probability })
+			return callback({ success: true, probability })
 		}
-		return callback({ success: false, probability })
+		callback({ success: false, probability })
 	}, 1000)
 }
 

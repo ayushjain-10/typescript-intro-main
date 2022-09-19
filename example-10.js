@@ -1,6 +1,4 @@
 "use strict";
-// Here I have defined a class with type script. 
-// Take a look at how the properties are typed. 
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -17,9 +15,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.Student = exports.Course = void 0;
-// https://www.typescriptlang.org/docs/handbook/2/classes.html#handbook-content
-// Complete the Course class below. 
+exports.Cohort = exports.Student = exports.Course = void 0;
 var Person = /** @class */ (function () {
     function Person(name, age) {
         this.name = name;
@@ -33,13 +29,8 @@ var Person = /** @class */ (function () {
 var joe = new Person('Joe', 33);
 // Define a Course. A Course a title: string and a units: number
 var Course = /** @class */ (function () {
-    function Course(title, units) {
-        this.title = title;
-        this.units = units;
+    function Course() {
     }
-    Course.prototype.describe = function () {
-        return "".concat(this.title, " has ").concat(this.units, " units");
-    };
     return Course;
 }());
 exports.Course = Course;
@@ -52,18 +43,17 @@ var Cohort;
     Cohort[Cohort["junior"] = 0] = "junior";
     Cohort[Cohort["senior"] = 1] = "senior";
 })(Cohort || (Cohort = {}));
+exports.Cohort = Cohort;
 var Student = /** @class */ (function (_super) {
     __extends(Student, _super);
-    function Student(name, age) {
+    function Student(name, age, cohort) {
         var _this = _super.call(this, name, age) || this;
         _this.courses = [];
+        _this.cohort = cohort;
         return _this;
     }
     Student.prototype.enroll = function (course) {
         this.courses.push(course);
-    };
-    Student.prototype.describe = function () {
-        return "".concat(_super.prototype.describe.call(this), " and is in the ").concat(this.cohort, " cohort");
     };
     return Student;
 }(Person));

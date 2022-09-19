@@ -17,7 +17,7 @@ enum MonsterType { lizard, flying, ape}
 function rampage(name: string, type: MonsterType, power: number, city: string): string {
 	let action: string
 	switch(type) {
-		case MonsterType.ape: 
+		case MonsterType.ape : default: 
 			action = 'smash'
 			break
 
